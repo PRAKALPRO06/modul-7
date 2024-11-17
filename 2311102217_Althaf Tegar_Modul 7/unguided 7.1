@@ -1,0 +1,91 @@
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	var X217 int
+	fmt.Print("Masukkan jumlah elemen array: ")
+	fmt.Scan(&X217)
+
+	// Array kapasitas N
+	arr := make([]int, X217)
+
+	// Mengisi array
+	fmt.Println("Masukkan elemen array")
+	for i := 0; i < X217; i++ {
+		fmt.Printf("Elemen ke %d: ", i)
+		fmt.Scan(&arr[i])
+	}
+
+	// Menampilkan seluruh isi array
+	fmt.Println("Isi keseluruhan array:")
+	fmt.Println(arr)
+
+	// Menampilkan elemen dengan indeks ganjil
+	fmt.Println("Elemen dengan indeks ganjil:")
+	for i := 1; i < X217; i += 2 {
+		fmt.Print(arr[i], " ")
+	}
+	fmt.Println()
+
+	// Menampilkan elemen dengan indeks genap
+	fmt.Println("Elemen indeks genap:")
+	for i := 0; i < X217; i += 2 {
+		fmt.Print(arr[i], " ")
+	}
+	fmt.Println()
+
+	// Menampilkan elemen indeks kelipatan bilangan x
+	var x int
+	fmt.Print("Masukkan bilangan x untuk indeks kelipatan: ")
+	fmt.Scan(&x)
+	fmt.Println("Elemen dengan indeks kelipatan", x, ":")
+	for i := 0; i < X217; i++ {
+		if i%x == 0 {
+			fmt.Print(arr[i], " ")
+		}
+	}
+	fmt.Println()
+
+	// Menghapus elemen pada indeks tertentu
+	var indexDelete int
+	fmt.Print("Masukkan indeks elemen yang ingin dihapus: ")
+	fmt.Scan(&indexDelete)
+	if indexDelete >= 0 && indexDelete < X217 {
+		arr = append(arr[:indexDelete], arr[indexDelete+1:]...)
+		X217-- // Mengurangi jumlah elemen
+		fmt.Println("Array setelah penghapusan elemen pada indeks", indexDelete, ":")
+		fmt.Println(arr)
+	}
+
+	// Menampilkan rata-rata
+	sum := 0
+	for value := range arr {
+		sum += value
+	}
+	ratarata := float64(sum) / float64(X217)
+	fmt.Printf("Rata-rata: %.2f\n", ratarata)
+
+	// Menampilkan standar deviasi
+	sumSquares := 0.0
+	for _, value := range arr {
+		sumSquares += math.Pow(float64(value)-ratarata, 2)
+	}
+	stdDev := math.Sqrt(sumSquares / float64(X217))
+	fmt.Printf("Standar Deviasi: %.2f\n", stdDev)
+
+	// Menampilkan frekuensi dari suatu bilangan tertentu
+	var target int
+	fmt.Print("Masukkan bilangan untuk mencari frekuensinya: ")
+	fmt.Scan(&target)
+	frequensi := 0
+	for _, value := range arr {
+		if value == target {
+			frequensi++
+		}
+	}
+	fmt.Printf("Frekuensi dari bilangan %d: %d\n", target, frequensi)
+}

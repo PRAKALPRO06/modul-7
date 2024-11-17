@@ -3,7 +3,7 @@
 
 <br>
 
-<h2 align="center"><strong> MODUL VI </strong></h2>
+<h2 align="center"><strong> MODUL VII </strong></h2>
 <h2 align="center"><strong> STRUCT DAN ARRAY </strong></h2>
 
 <br>

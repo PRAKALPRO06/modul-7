@@ -1,0 +1,36 @@
+package main
+
+import "fmt"
+
+func main() {
+	var klubA22, klubB17 string
+	var skorA, skorB int
+	var hasil2217 []string
+
+	fmt.Print("Klub A : ")
+	fmt.Scan(&klubA22)
+	fmt.Print("Klub B : ")
+	fmt.Scan(&klubB17)
+
+	for i := 1; ; i++ {
+		fmt.Printf("Pertandingan %d : ", i)
+		fmt.Scan(&skorA, &skorB)
+		if skorA < 0 || skorB < 0 {
+			break
+		}
+
+		if skorA > skorB {
+			hasil2217 = append(hasil2217, klubA22)
+		} else if skorB > skorA {
+			hasil2217 = append(hasil2217, klubB17)
+		} else {
+			hasil2217 = append(hasil2217, "Draw")
+		}
+	}
+
+	fmt.Println()
+	for i, h := range hasil2217 {
+		fmt.Printf("Hasil %d : %s\n", i+1, h)
+	}
+	fmt.Println("Pertandingan selesai")
+}
